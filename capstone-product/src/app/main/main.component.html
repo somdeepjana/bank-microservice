@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--
+            Adding bootstrap link
+        -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        </head>
+        <body>
+<div class="container container-fluid mt-4 mb-4 padding" >
+  <div class="d-flex align-items-center justify-content-center padding" style="height: 350px;margin-left: 0%; width: 100%;">
+
+      <div class="row justify-content-center padding" style="width: 100%;">
+        <div class="col-sm-12 col-md-4" >
+        <button class="btn btn-outline-dark btn-block padding box-bottom-shadow" id="checkBalance" onclick="fetch_account_details('checkbalancedetails')">
+          <span>
+            <i class="fas fa-piggy-bank fa-5x"></i>
+          </span><br>
+          <span style="font-size: 2em;">
+            Check Balance
+          </span>
+        </button>
+      </div>
+      <div class="col-sm-12 col-md-4" >
+        <button  class="btn btn-outline-dark btn-block box-bottom-shadow" id="transfer" onclick="fetch_account_details('transferamount')">
+          <span>
+            <i class="fas fa-share-square fa-5x"></i>
+          </span><br>
+          <span style="font-size: 2em;">
+            Transfer Amount
+          </span>
+          </button>
+      </div>
+      <div class="col-sm-12 col-md-4" >
+        <button class="btn btn-outline-dark btn-block box-bottom-shadow" id="ministatement" onclick="fetch_account_details('ministatementmain')">
+          <span>
+            <i class="fas fa-receipt fa-5x"></i>
+          </span><br>
+          <span style="font-size: 2em;">
+            Mini Statement
+          </span>
+
+        </button>
+      </div>
+      </div>
+
+
+  </div>
+
+<!--
+    <div class="row justify-content-center mt-5">
+        <div class="cols-sm-8 col-md-4 ">
+           <button class="btn btn-outline-dark btn-block padding box-bottom-shadow" id="checkBalance" onclick="fetch_account_details('checkbalancedetails')">
+            <span style="color: rgb(67, 67, 78);">
+              <i class="fas fa-piggy-bank fa-5x"></i>
+            </span><br>
+            <span style="font-size: 2em;">
+              Check Balance
+            </span>
+          </button>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+     <div class="cols-sm-8 col-md-4">
+        <button  class="btn btn-outline-dark btn-block box-bottom-shadow" id="transfer" onclick="fetch_account_details('transferamount')">
+          <span style="color: rgb(67, 67, 78);">
+            <i class="fas fa-share-square fa-5x"></i>
+          </span><br>
+          <span style="font-size: 2em;">
+            Transfer amount
+          </span>
+          </button>
+     </div>
+ </div>
+ <div class="row justify-content-center mt-5">
+     <div class="cols-sm-8 col-md-4">
+        <button class="btn btn-outline-dark btn-block box-bottom-shadow" id="ministatement" onclick="fetch_account_details('ministatementmain')">
+          <span style="color: rgb(67, 67, 78);">
+            <i class="fas fa-receipt fa-5x"></i>
+          </span><br>
+          <span style="font-size: 2em;">
+            Mini Statement
+          </span>
+
+        </button>
+     </div>
+ </div>
+-->
+ <div class="row justify-content-center mt-3">
+   <div class="col-12">
+     <div class="alert alert-danger" style="display: none;" role="alert" id="mainComponentErr">
+
+     </div>
+   </div>
+ </div>
+</div>
+</body>
+</html>

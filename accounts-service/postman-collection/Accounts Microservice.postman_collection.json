@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "b61c3cd0-88f5-4d04-b45f-2f8622389a8f",
+		"name": "Accounts Microservice",
+		"description": "Accounts Microservice Routes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "All Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/details/accounts/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"details",
+								"accounts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AccountDetails",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/details/accounts/:accountId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"details",
+								"accounts",
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "00001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckAccount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/details/check/:accountId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"details",
+								"check",
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "00001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "NotifyTransaction",
+			"item": [
+				{
+					"name": "NotifyTransaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from_account",
+									"value": "00001",
+									"type": "text"
+								},
+								{
+									"key": "to_account",
+									"value": "00003",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100.96",
+									"type": "text"
+								},
+								{
+									"key": "s2s",
+									"value": "adwdwcxwdwedxwdwdwdw",
+									"type": "text"
+								},
+								{
+									"key": "transc_id",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "transac_currency",
+									"value": "INR",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/notify/transaction",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notify",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currency",
+			"item": [
+				{
+					"name": "CurrencyRates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/currency/rates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"currency",
+								"rates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CurrencyConvert",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/currency/convert?from=INR&to=YEN&amount=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"currency",
+								"convert"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "INR"
+								},
+								{
+									"key": "to",
+									"value": "YEN"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

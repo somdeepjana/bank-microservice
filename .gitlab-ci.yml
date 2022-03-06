@@ -1,0 +1,93 @@
+image: node:16.13.1-alpine
+
+stages:
+    - install
+    - test
+    # - install-account_service
+    # - unittest-account_service
+    # - install-transaction_service
+    # - unittest-transaction_service
+
+install_dependencies_account_service:
+  stage: install
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+
+  script:
+    - cd ./accounts-service/
+    - pwd
+    - ls -a
+    - npm ci
+
+test_account_service:
+  stage: test
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  script:
+    - cd ./accounts-service/
+    - pwd
+    - npm ci
+    - npm run coverunit
+
+install_dependencies_transaction_service:
+  stage: install
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+
+  script:
+    - cd ./transaction-service/
+    - pwd
+    - ls -a
+    - npm ci
+
+test_transaction_service:
+  stage: test
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  script:
+    - cd ./transaction-service/
+    - pwd
+    - npm run coverunit
+
+install_dependencies_for_frontend:
+  stage: install
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  script:
+    - cd ./capstone-product/
+    - pwd
+    - npm ci
+
+
+test_frontend:
+  stage: test
+  tags:
+    - EVGIT_RUNNER2
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  script:
+    - cd ./capstone-product/
+    - pwd
+    - npm ci
+    - npm run test

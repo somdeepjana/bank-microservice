@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top ">
+    <div class="container-fluid" align="center">
+        <div class="navbr-brand">
+            <span style="font-size: 2em; color: rgb(227, 240, 232);">
+                <i class="fa fa-university"></i>
+            </span>
+        </div>
+
+        <div class="nav navbar-nav mx-auto navbar-center">
+            <div class="nav-item text-center mt-3">
+                <h3 class="font-weight-bold" style="color: rgb(250, 248, 252);">
+                    My Bank
+                </h3>
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="width: 100%;">
+                    <div class="btn btn-outline-light disabled mt-2" style="width: 100%;" id="userName" style="display: none;">
+                        <font>User-Name</font>
+                    </div>
+                </li>
+                <li class="nav-item active" style="width: 100%;">
+                    <a class="nav-link d-flex" style="width: 100%;" routerLink="main">
+                        <button class="btn btn-tertiary btn-block" id="homeBtn" (click)="goToPage3('main')" style="display: none;">
+                            <font>Home</font>
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item active" style="width: 100%;">
+                    <button class="btn btn-tertiary btn-block mt-2"  style="width: 100%;" id="logoutBtn" onclick="logout()" style="display: none;">
+                        <font>Logout</font>
+                    </button>
+                    <button class="btn btn-outline-success" onclick="initKeycloak()" id="loginbtn">
+                      Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

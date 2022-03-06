@@ -1,0 +1,29 @@
+<div class="container container-fluid padding">
+    <h3 class="display-5 mt-4" align="center"> Check Balance</h3>
+    <hr>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="card" style="border:none;">
+                <div class="card-body">
+                  <button class="btn btn-primary mb-3" style="display: none;" id="load_btn" onclick="load_accounts()">Load accounts</button>
+                  <div style="display: none;" id='dropdwn'>
+                    <div class="form-group">
+                      <select class="btn btn-outline-info form-select" name="accountNumber" id="accountNumber">
+                        <option selected>Select Account Number</option>
+                      </select>
+
+                    </div>
+                    <button class="btn btn-outline-success" id="submittButton" onclick="get_acc_balance()">Submitt</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="alert alert-danger" style="display:none;" role="alert" id="balanceCheckErr">
+      </div>
+    </div>
+
+  </div>
+

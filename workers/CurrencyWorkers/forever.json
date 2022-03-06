@@ -1,0 +1,23 @@
+[
+    {
+      "uid": "CurrencyPublisherWorkwer",
+      "append": true,
+      "script": "index.js",
+      "sourceDir": "/usr/src/app/CurrencyPublisherWorker",
+      "minUptime": 0
+    },
+    {
+      "uid": "AccountsCurrencySunscriberWorker",
+      "append": true,
+      "script": "index.js",
+      "sourceDir": "/usr/src/app/AccountsCurrencySubscriberWorker",
+      "minUptime": 0
+    },
+    {
+        "uid": "TransactionCurrencySunscriberWorker",
+        "append": true,
+        "script": "index.js",
+        "sourceDir": "/usr/src/app/TransactionCurrencySubscriberWorker",
+        "minUptime": 0
+      }
+  ]

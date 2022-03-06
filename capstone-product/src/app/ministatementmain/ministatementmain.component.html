@@ -1,0 +1,29 @@
+<div class="container container-fluid padding">
+    <h3 class="display-5 mt-4" align="center"> Get Ministatements</h3>
+    <hr>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="card" style="border:none;">
+                <div class="card-body">
+
+                  <button class="btn btn-gray" style="display: none;" onclick="load_mini_accounts()" id="mini_load_btn">
+                    Load Accounts
+                  </button>
+
+                  <div style="display: none;" id="ministatement_select_account">
+                    <div class="form-group">
+                      <select class="btn btn-outline-dark form-select" name="mini_accountNumber" id="mini_accountNumber">
+                        <option selected>Select Account Number</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-outline-dark btn-lg" id="miniStatementButton" onclick="display_mini_statements()">Submit</button>
+                  </div>
+                  <span id="ministatementSelectErr" style="color: tomato;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" style="display:none;" role="alert" id="miniStatementErr">
+    </div>
+</div>

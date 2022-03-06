@@ -1,0 +1,70 @@
+<div class="container container-fluid mt-4">
+
+    <h3 class="display-4" align="center">Transaction Details</h3>
+    <hr>
+    <button class="btn btn-primary" style="display: none;" id="trnsferReportLoad" onclick="displayTransferData()">Show</button>
+    <div id="transferContent" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-gray">&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
+                <span class="form-control" id="transactionId"></span>
+            </div>
+        </div>
+    </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-gray">&nbsp;&nbsp;From&nbsp;&nbsp;</span>
+                </div>
+                <span class="form-control" id="fromAccountNumber"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
+                <span class="form-control" id="toAccountNumber"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-gray">Amount</span>
+                </div>
+                <!--<div class="input-group-prepend">
+                    <span class="input-group-text alert-success" id="currency"></span>
+                  </div>-->
+                <span class="form-control" id="amount"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-gray">&nbsp;&nbsp;Status&nbsp;&nbsp;</span>
+                </div>
+                <span class="form-control" id="status"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-3">
+            <button class="btn btn-outline-dark btn-md" id="transferReturnButton" (click)="goTopage4('transferamount')">Ok</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="alert alert-danger" style="display: none;" id="transferDetailserr">
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CapstoneProduct</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+  <style>
+    .shadow{
+     box-shadow: inset 0 0 10px #000000;
+    }
+    .box-bottom-shadow {
+      -webkit-box-shadow: 0 8px 19px -6px black;
+      -moz-box-shadow: 0 8px 19px -6px black;
+      box-shadow: 0 8px 19px -6px black;
+    }
+  </style>
+  <!--
+            Adding the bootstrap js files for designing
+  -->
+  <!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  -->
+
+  <script src="assets/js/jquery-3.6.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="assets/keycloak.js"></script>
+  <script src="assets/js/headerjs/header_asset.js"></script>
+  <script src="assets/js/mainPagejs/fetch_account_balance.js"></script>
+  <script src="assets/js/mainPagejs/mainPageLogger.js"></script>
+  <script src="assets/js/checkBalanceJS/display_accounts_file.js"></script>
+  <script src="assets/js/checkBalanceJS/checkBlanceErrorLogger.js"></script>
+  <script src="assets/js/transferjs/transferAmountServices.js"></script>
+  <script src="assets/js/transferjs/transferAmountlogger.js"></script>
+  <script src="assets/js/ministatementsjs/ministatementsErrorLogger.js"></script>
+  <script src="assets/js/ministatementsjs/ministatement_impl.js"></script>
+  <script src="assets/env.js"></script>
+
+</head>
+<body id="bodytag" onload="initKeycloak()">
+  <app-root></app-root>
+</body>
+</html>

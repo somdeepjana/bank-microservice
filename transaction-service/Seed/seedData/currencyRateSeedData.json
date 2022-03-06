@@ -1,0 +1,22 @@
+[
+    {
+        "currency_code": "USD",
+        "rate_refto_usd": 1,
+        "description": "United States Dollar"
+    },
+    {
+        "currency_code": "INR",
+        "rate_refto_usd": 76,
+        "description": "Indian rupee"
+    },
+    {
+        "currency_code": "YEN",
+        "rate_refto_usd": 113.34,
+        "description": "Japanese Yen"
+    },
+    {
+        "currency_code": "YUN",
+        "rate_refto_usd": 6.37,
+        "description": "Chinese Yuan"
+    }
+]

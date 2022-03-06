@@ -1,0 +1,74 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Account Miceoservice Debug",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            // "program": "${workspaceFolder}\\accounts-service\\bin\\www",
+            "args": ["run", "dev"],
+            "restart": true,
+            "runtimeExecutable": "npm",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\accounts-service"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Transaction Miceoservice Debug",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": ["run", "dev"],
+            "restart": true,
+            "runtimeExecutable": "npm",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\transaction-service"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Currency Publisher Worker Debug",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": ["run", "dev"],
+            "restart": true,
+            "runtimeExecutable": "npm",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\workers\\CurrencyWorkers\\CurrencyPublisherWorker"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Currency Subscriber Accounts Worker Debug",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": ["run", "dev"],
+            "restart": true,
+            "runtimeExecutable": "npm",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\workers\\CurrencyWorkers\\AccountsCurrencySubscriberWorker"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Currency Subscriber Transaction Worker Debug",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": ["run", "dev"],
+            "restart": true,
+            "runtimeExecutable": "npm",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\workers\\CurrencyWorkers\\TransactionCurrencySubscriberWorker"
+        }
+    ]
+}

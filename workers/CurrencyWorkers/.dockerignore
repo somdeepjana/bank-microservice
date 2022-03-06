@@ -1,0 +1,17 @@
+AccountsCurrencySubscriberWorker/node_modules
+AccountsCurrencySubscriberWorker/coverage
+AccountsCurrencySubscriberWorker/.nyc_output
+AccountsCurrencySubscriberWorker/.env
+AccountsCurrencySubscriberWorker/logs
+
+CurrencyPublisherWorker/node_modules
+CurrencyPublisherWorker/coverage
+CurrencyPublisherWorker/.nyc_output
+CurrencyPublisherWorker/.env
+CurrencyPublisherWorker/logs
+
+TransactionCurrencySubscriberWorker/node_modules
+TransactionCurrencySubscriberWorker/coverage
+TransactionCurrencySubscriberWorker/.nyc_output
+TransactionCurrencySubscriberWorker/.env
+TransactionCurrencySubscriberWorker/logs

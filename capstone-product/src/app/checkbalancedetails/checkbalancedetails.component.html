@@ -1,0 +1,47 @@
+<div class="container container-fluid padding">
+    <h3 class="display-5 mt-4" align="center"> Account Balances</h3>
+    <hr>
+    <button class="btn btn-secondary mt-2 mb-3" onclick="display_details()" id='details_balance_load_btn' style="display: none;">load</button>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-12">
+
+            <table class="table table-striped" id="displayBalance" style="display: none;">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Account Number
+                        </th>
+                        <th scope="col">
+                            Available Balance
+                        </th>
+                        <th scope="col">
+                            Limit Balance
+                        </th>
+                        <th scope="col">
+                            Lien Amount
+                        </th>
+                        <th scope="col">
+                            Total Effective Balance
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="alert alert-danger" style="display: none;" id="checkBalanceDetailsError">
+
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col">
+             <button class="btn btn-outline-dark btn-md" id="transferReturnButton" (click)="balanceRedirect('main')">OK</button>
+        </div>
+    </div>
+</div>
+

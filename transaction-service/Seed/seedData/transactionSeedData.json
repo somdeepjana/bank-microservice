@@ -1,0 +1,38 @@
+[
+    {
+        "fromaccount_id": "00001",
+        "toaccount_id": "00002",
+        "toaccount_currency": "YEN",
+        "trans_status": "COMPLETE",
+        "transaction_amount": 2000,
+        "transac_currency": "USD",
+        "conversion_rate": 1
+    },
+    {
+        "fromaccount_id": "00003",
+        "toaccount_id": "00001",
+        "toaccount_currency": "USD",
+        "trans_status": "FAIL",
+        "transaction_amount": 6000,
+        "transac_currency": "USD",
+        "conversion_rate": 1
+    },
+    {
+        "fromaccount_id": "00002",
+        "toaccount_id": "00003",
+        "toaccount_currency": "INR",
+        "trans_status": "INPROGRESS",
+        "transaction_amount": 2000.2,
+        "transac_currency": "YEN",
+        "conversion_rate": 113.34
+    },
+    {
+        "fromaccount_id": "00001",
+        "toaccount_id": "00003",
+        "toaccount_currency": "INR",
+        "trans_status": "FAIL",
+        "transaction_amount": 2000,
+        "transac_currency": "INR",
+        "conversion_rate": 76
+    }
+]

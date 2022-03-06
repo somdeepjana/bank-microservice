@@ -1,0 +1,40 @@
+
+services:
+
+  currency-publisher-worker:
+    build: ./workers/CurrencyWorkers/CurrencyPublisherWorker
+    image: bank-app/currency-publisher-worker
+    restart: unless-stopped
+    environment:
+      - REF_CURRENCY=${REF_CURRENCY?:err}
+      - EXCHANGE_RATE_BASE_ROUTE=${EXCHANGE_RATE_BASE_ROUTE:?err}
+      - RABBITMQ_CONNECTION_STRING=amqp://rabbitmq-broker:5672
+      - EXCHANGE_NAME=currencyRates
+      - CURRENCY_POLLING_RATE_IN_MINUTES=${CURRENCY_POLLING_RATE_IN_MINUTES:?err}
+    depends_on:
+      - accounts-currency-subscribes-worker
+      - transaction-currency-subscribes-worker
+
+  accounts-currency-subscribes-worker:
+    build: ./workers/CurrencyWorkers/AccountsCurrencySubscriberWorker
+    image: bank-app/accounts-currency-subscribes-worker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_CONNECTION_STRING=amqp://rabbitmq-broker:5672
+      - EXCHANGE_NAME=currencyRates
+      - MONGODB_URL=${ACCOUNTS_MONGODB_URL:?err}
+    depends_on:
+      - transaction-microservice
+      - accounts-microservice
+
+  transaction-currency-subscribes-worker:
+    build: ./workers/CurrencyWorkers/TransactionCurrencySubscriberWorker
+    image: bank-app/transaction-currency-subscribes-worker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_CONNECTION_STRING=amqp://rabbitmq-broker:5672
+      - EXCHANGE_NAME=currencyRates
+      - SQLDB_CONNECTION_STRING=mysql:${TRANSACTION_MYSQL_DB_USERNAME:?err}:${TRANSACTION_MYSQL_DB_PASSWORD:?err}@mysql-transaction-db/transaction_service_db
+    depends_on:
+      - transaction-microservice
+      - accounts-microservice

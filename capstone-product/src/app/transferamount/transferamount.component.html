@@ -1,0 +1,77 @@
+<!--
+    Transfer amount main page
+-->
+
+<div class="container container-fluid padding">
+  <h3 class="display-4" align="center">Transfer Amount</h3>
+  <hr>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="card" style="border:none;">
+                <div class="card-body">
+
+                  <button class="btn btn-gray" style="display: none;" onclick="transferAmountLoadAccounts()" id="transferLoadbtn">
+                    Load Accounts
+                  </button>
+
+                  <div id="transferAmountLanding" style="display: none;">
+                    <!--
+                      From account
+                    -->
+                    <div class="form-group">
+                      <label for="fromAccountNumber">From:</label><br>
+                      <select class="btn btn-outline-dark form-select" name="fromAccountNumber" id="fromAccountNumber">
+                        <option selected>Select Account Number</option>
+                      </select>
+                    </div>
+                    <span id="transferAmountSelectErr" style="color: tomato;"></span>
+                    <!--
+                      to accounts
+                    -->
+
+                    <div class="form-group">
+                      <label for="toAccountNumber">To:</label>
+                      <input type="text" class="form-control" name="toAccountNumber" placeholder="To Account number" id="toAccountNumber">
+                    </div>
+                    <span id="transferAmountToErr" style="color: tomato;"></span>
+                    <span id="transferAmountSelectErr" style="color: tomato;"></span>
+                    <!--
+                      Date field
+
+                    <div id="date-picker" class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">Date</span>
+                      </div>
+                      <input  onload="getdate()" placeholder="date" type="date" id="datefield" class="form-control">
+                      <div class="input-group-append">
+                        <span class="input-group-text bg-light">
+                          <i class="fa fa-calendar" tabindex=0></i>
+                        </span>
+                      </div>
+
+                    </div>
+                  -->
+                    <!--
+                      Amount field
+                      Commented because of change request new field added
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">INR</span>
+                        </div>
+                        <input type="number" class="form-control" name="amount" id="amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                  -->
+                    <button class="btn btn-outline-dark btn-lg" id="transferSubmittButotn" onclick="transferValidateAccount()">Next</button>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" style="display:none;" role="alert" id="transferErr">
+    </div>
+</div>

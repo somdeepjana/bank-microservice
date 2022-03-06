@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "5e7efd2d-3fa6-4b6c-8531-30eb06ef5951",
+		"name": "Keycloak Microservice",
+		"description": "OIDC Microservice routes for getting token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OIDC configarations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/auth/realms/:relamName/.well-known/openid-configuration",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						":relamName",
+						".well-known",
+						"openid-configuration"
+					],
+					"variable": [
+						{
+							"key": "relamName",
+							"value": "bank-app"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AccessToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{user_name}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{user_password}}",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{auth_generate_client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{auth_generate_client_secret}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/realms/:relamName/protocol/openid-connect/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						":relamName",
+						"protocol",
+						"openid-connect",
+						"token"
+					],
+					"variable": [
+						{
+							"key": "relamName",
+							"value": "bank-app"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "implicitGrant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/auth/realms/:relamName/protocol/openid-connect/auth?response_type=token&client_id=test-web&redirect_uri=http://localhost/main&state=12345",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						":relamName",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "token"
+						},
+						{
+							"key": "client_id",
+							"value": "test-web"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost/main/"
+						},
+						{
+							"key": "state",
+							"value": "12345"
+						}
+					],
+					"variable": [
+						{
+							"key": "relamName",
+							"value": "bank-app"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JWKs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/auth/realms/bank-app/protocol/openid-connect/certs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"realms",
+						"bank-app",
+						"protocol",
+						"openid-connect",
+						"certs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "user_name",
+			"value": "user1"
+		},
+		{
+			"key": "user_password",
+			"value": ""
+		},
+		{
+			"key": "auth_generate_client_id",
+			"value": "test-client"
+		},
+		{
+			"key": "auth_generate_client_secret",
+			"value": ""
+		}
+	]
+}

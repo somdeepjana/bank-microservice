@@ -1,0 +1,9 @@
+{
+  "realm": "bank-app",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "web-app",
+  "public-client": true,
+  "confidential-port": 0,
+  "redirect_uri":"http://localhost:4200/main"
+}

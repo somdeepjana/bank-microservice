@@ -1,0 +1,99 @@
+<div class="container container-fluid padding">
+      <h3 class="display-5 mt-4" align="center"> Transaction Details</h3>
+    <hr>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-3">
+        <button class="btn btn-tertiary" style="display: none;" id="ministatementLoadBtn" onclick="display_ministatements()">
+          Show
+        </button>
+      </div>
+    </div>
+
+    <div style="display: none;" id="miniStatementContent">
+      <div class="row justify-content-center mt-4">
+        <div class="col-xs-12 col-sm-6">
+          <div class="row">
+            <div class="col">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="background-color: rgb(236, 184, 142);">
+                    <b>Ac.NO</b>
+                  </span>
+                </div>
+                <div  class="form-control" name="accountNumber" id="accountNumber">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="row justify-content-center">
+            <div class="col">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="background-color: rgb(162, 208, 236);">
+                    <b>Balance</b>
+                  </span>
+                </div>
+                <div  class="form-control" name="amount" id="amount">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-12">
+          <table class="table table-striped table-bordered" id='miniStatementData'>
+            <thead>
+              <tr>
+                <th scope="col">
+                  Transaction Reference Id
+                </th>
+                <th scope="col">
+                  From Account
+                </th>
+                <th scope="col">
+                  To Account
+                </th>
+                <th scope="col">
+                  To Account Currency
+                </th>
+                <th scope="col">
+                  &nbsp;&nbsp;&nbsp;&nbsp; Amount &nbsp;&nbsp;&nbsp;&nbsp;
+                </th>
+                <th scope="col">
+                  Type
+                </th>
+                <th scope="col">
+                  Status
+                </th>
+                <th scope="col">
+                  Rate
+                </th>
+                <th scope="col">
+                  Requested At
+                </th>
+                <th scope="col">
+                  Completed At
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <div class="alert alert-danger" style="display: none;" id='miniStatementDetailsErr'></div>
+      <div class="row justify-content-center mt-4">
+        <div class="col-lg-3">
+            <button class="btn btn-outline-dark btn-lg" id="transferReturnButton" (click)="goTopage6('ministatementmain')">Ok</button>
+        </div>
+      </div>
+    </div>
+
+
+</div>

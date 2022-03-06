@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "3eceb86a-4589-4f89-a8c4-7bf91b5ba868",
+		"name": "Trasaction Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Statement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/transaction/statement/:accountId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"transaction",
+						"statement",
+						":accountId"
+					],
+					"variable": [
+						{
+							"key": "accountId",
+							"value": "00001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TransferFund",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "from_account_id",
+							"value": "00001",
+							"type": "text"
+						},
+						{
+							"key": "to_account_id",
+							"value": "00003",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "100.56",
+							"type": "text"
+						},
+						{
+							"key": "transac_currency",
+							"value": "USD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/transaction/createtransaction",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"transaction",
+						"createtransaction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3001"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,162 @@
+version: "3.9"
+
+services:
+  accounts-microservice:
+    build: ./accounts-service
+    image: bank-app/accounts-microservice
+    restart: unless-stopped
+    # ports:
+    #   - 7000:3000
+    environment:
+      - DEV=*
+      - PORT=3000
+      - MONGODB_URL=${ACCOUNTS_MONGODB_URL:?err}
+      - CLIENT_ID=${ACCOUNTS_KEYCLOAK_CLIENT_ID:?err}
+      - CLIENT_SECRET=${ACCOUNTS_KEYCLOAK_CLIENT_SECRET:?err}
+      - KEYCLOAK_URL=${KWYCLOAK_ISSUER_ID:?err}
+      - KEYCLOAK_REALM_PUBLIC_KEY=${KEYCLOAK_REALM_PUBLIC_KEY:?err}
+      - KEYCLOAK_REALM=bank-app
+      - S2S_INTREGRITY_KEY=${SERVERCE_TO_SERVICE_KEY:?err}
+      - TEST_CLIENT_ID=${TEST_CLIENT_ID:?err}
+      - TEST_CLIENT_SECRET=${TEST_CLIENT_SECRET:?err}
+      - TEST_USERNAME_1=${TEST_USERNAME_1:?err}
+      - TEST_USER_1_PASSWORD=${TEST_USER_1_PASSWORD:?err}
+      - TEST_USER_2=${TEST_USER_2:?err}
+      - TEST_USER_2_PASSWORD=${TEST_USER_2_PASSWORD:?err}
+    volumes:
+      - ./logs/accounts-service:/usr/src/app/logs
+    # deploy:
+    #   replicas: 2
+    depends_on:
+      - mongors1
+      - keycloak-service
+
+  transaction-microservice:
+    build: ./transaction-service
+    image: bank-app/transaction-microservice
+    restart: unless-stopped
+    # ports:
+    #   - 7001:3001
+    environment:
+      - DEV=*
+      - PORT=3001
+      - SQLDB_CONNECTION_STRING=mysql:${TRANSACTION_MYSQL_DB_USERNAME:?err}:${TRANSACTION_MYSQL_DB_PASSWORD:?err}@mysql-transaction-db/transaction_service_db
+      - ACCOUNTS_SERVICE_BASE_LOCATION=http://accounts-microservice:3000
+      - CLIENT_ID=${TRANSACTION_KEYCLOAK_CLIENT_ID:?err}
+      - CLIENT_SECRET=${TRANSACTION_KEYCLOAK_CLIENT_SECRET:?err}
+      - KEYCLOAK_URL=${KWYCLOAK_ISSUER_ID:?err}
+      - KEYCLOAK_REALM_PUBLIC_KEY=${KEYCLOAK_REALM_PUBLIC_KEY:?err}
+      - KEYCLOAK_REALM=bank-app
+      - S2S_INTREGRITY_KEY=${SERVERCE_TO_SERVICE_KEY:?err}
+      - TEST_CLIENT_ID=${TEST_CLIENT_ID:?err}
+      - TEST_CLIENT_SECRET=${TEST_CLIENT_SECRET:?err}
+      - TEST_USERNAME_1=${TEST_USERNAME_1:?err}
+      - TEST_USER_1_PASSWORD=${TEST_USER_1_PASSWORD:?err}
+      - TEST_USER_2=${TEST_USER_2:?err}
+      - TEST_USER_2_PASSWORD=${TEST_USER_2_PASSWORD:?err}
+    volumes:
+      - ./logs/transaction-service:/usr/src/app/logs
+    # deploy:
+    #   replicas: 2
+    depends_on:
+      - keycloak-service
+      - mysql-transaction-db
+      - accounts-microservice
+
+  bankapp-webportal:
+    build: ./capstone-product
+    image: bank-app/bankapp-webportal
+    restart: unless-stopped
+    # ports:
+    #   - "80:80"
+    environment:
+      - GET_ACCOUNTS_URL=${WEBPORTAL_GET_ACCOUNT_URL:?err}
+      - CHECK_ACCOUNTS_URL=${WEBPORTAL_CHECK_ACCOUNT_URL:?err}
+      - MINISTATEMENT_URL=${WEBPORTAL_MINISTATEMENT_URL:?err}
+      - TRANSFER_URL=${WEBPORTAL_TRANSFER_URL:?err}
+      - REALM=bank-app
+      - SSL_REQUIRED=external
+      - PUBLIC_CLIENT=true
+      - AUTH_SERVER_URL=${WEBPORTAL_AUTH_SERVER_URL:?err}
+      - RESOURCE=${WEBPORTAL_CLIENT_ID:?err}
+      - CONFIDENTIAL_PORT=${WEBPORTAL_CONFIDENTIAL_PORT:?err}
+      - REDIRECT_URI=${WEBPORTAL_REDIRECT_URI:?err}
+    # volumes:
+      # - ./infraservice/nginx-service/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - keycloak-service
+      - mysql-transaction-db
+      - accounts-microservice
+      - transaction-microservice
+
+  keycloak-service:
+    image: quay.io/keycloak/keycloak:15.0.2
+    restart: unless-stopped
+    # ports:
+    #   - 8080:8080
+    environment:
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres-keycloak-db
+      - DB_DATABASE=keycloak_db
+      - DB_USER=${KEYCLOAK_POSTGRES_DB_USERNAME:?err}
+      - DB_PASSWORD=${KEYCLOAK_POSTGRES_DB_PASSWORD:?err}
+      - DB_SCHEMA=public
+      - KEYCLOAK_USER=${KEYCLOAK_ADMIN_USER:?err}
+      - KEYCLOAK_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD:?err}
+      - PROXY_ADDRESS_FORWARDING=true
+    depends_on:
+      - postgres-keycloak-db
+
+  nginx-service:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./infraservice/nginx-service/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - keycloak-service
+      - accounts-microservice
+      - transaction-microservice
+
+  postgres-keycloak-db:
+    build: ./infraservice/postgres-service
+    image: bank-app/postgres-service
+    # image: postgres:9.6
+    restart: always
+    environment:
+      - POSTGRES_DB=keycloak_db
+      - POSTGRES_USER=${KEYCLOAK_POSTGRES_DB_USERNAME:?err}
+      - POSTGRES_PASSWORD=${KEYCLOAK_POSTGRES_DB_PASSWORD:?err}
+    # volumes:
+    #   - ./infraservice/postgres-service/data:/var/lib/postgresql/data
+
+  mongors1:
+    image: mongo:4.4
+    command: ["--replSet", "rs1", "--bind_ip_all", "--port", "27017"]
+    restart: always
+    ports:
+      - 10001:27017
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --port 27017 --quiet) -eq 1
+      interval: 10s
+      start_period: 30s
+
+  mysql-transaction-db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 10002:3306
+    environment:
+      - MYSQL_DATABASE=transaction_service_db
+      - MYSQL_USER=${TRANSACTION_MYSQL_DB_USERNAME:?err}
+      - MYSQL_PASSWORD=${TRANSACTION_MYSQL_DB_PASSWORD:?err}
+      - MYSQL_ROOT_PASSWORD=${TRANSACTION_MYSQL_DB_ROOT_PASSWORD:?err}
+
+
+  rabbitmq-broker:
+    image: rabbitmq:3.9-management
+    restart: always
+    ports:
+      - 10003:15672
+    

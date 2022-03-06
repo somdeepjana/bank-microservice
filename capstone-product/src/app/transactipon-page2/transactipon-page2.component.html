@@ -1,0 +1,33 @@
+<div class="container container-padding mt-4">
+  <h3 class="display-4" align="center">Enter Amount Details</h3>
+  <hr>
+  <button class="btn" style="display: none;" id="transferamountloadbtn" onclick="transferAmountLoad()">load</button>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-10">
+      <div class="card" style="border:none;">
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+
+                <select class="btn btn-outline-dark form-select" name="transferCurrency" id="transferCurrency">
+                </select>
+
+            </div>
+            <input type="number" class="form-control" name="amount" id="amount">
+            <div class="input-group-append">
+              <span class="input-group-text"></span>
+            </div>
+        </div>
+        <button class="btn btn-outline-dark btn-lg" id="transferPage2SubmitBtn" onclick="transferAmount()">Submit</button>
+        <div class="mt-3">
+          <button class="btn btn-outline-dark btn-lg" id="transferPage2Back" (click)="backToTransferMain('transferamount')">&nbsp;Back&nbsp;</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="alert alert-danger" style="display: none;" id='transferAmoutPage2Err'></div>
+
+
+</div>

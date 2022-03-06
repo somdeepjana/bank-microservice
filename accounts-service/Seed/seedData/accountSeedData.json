@@ -1,0 +1,34 @@
+[
+    {
+        "account_id": "00001",
+        "balance_amount": 1000,
+        "limit_amount": 2000,
+        "lien_amount": 0,
+        "customer_id": "user1",
+        "currency": "USD"
+    },
+    {
+        "account_id": "00003",
+        "balance_amount": 5000,
+        "limit_amount": 3000,
+        "lien_amount": 0,
+        "customer_id": "user1",
+        "currency": "INR"
+    },
+    {
+        "account_id": "00002",
+        "balance_amount": 2000.2,
+        "limit_amount": 3000,
+        "lien_amount": 0,
+        "customer_id": "user2",
+        "currency": "YEN"
+    },
+    {
+        "account_id": "00004",
+        "balance_amount": 7000,
+        "limit_amount": 3000,
+        "lien_amount": 0,
+        "customer_id": "user2",
+        "currency": "INR"
+    }
+]
